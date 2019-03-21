@@ -6,7 +6,12 @@ var dictionary = new Typo( "en_US" );
 //App setup
 var app = express();
 
-var server = app.listen(5000, () => {
+var port = process.env.PORT;
+if (port == null || port == "") {
+    port = 5000;
+};
+
+var server = app.listen(port, () => {
     console.log('Web server is running');
 });
 
