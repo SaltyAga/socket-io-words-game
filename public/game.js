@@ -1,7 +1,7 @@
 
 
 //Make connection
-var socket = io.connect('http://localhost:5000');
+var socket = io.connect();
 
 //query DOM
 var output = document.getElementById('output'),
