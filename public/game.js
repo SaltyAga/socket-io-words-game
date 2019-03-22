@@ -6,7 +6,7 @@ var socket = io.connect();
 //query DOM
 var output = document.getElementById('output'),
     namePlayer = document.getElementById('player-name'),
-    word = document.getElementById('word'),
+    word = (document.getElementById('word')),
     btn = document.getElementById('send'),
     feedback = document.getElementById('feedback'),
     timer = document.getElementById('timer'),
@@ -43,6 +43,9 @@ function startTimer(duration, display) {
         display.textContent = seconds + ' seconds left';
 
         if (--timer < -1) {
+            word.disabled = true;
+            namePlayer.disabled = true;
+            btn.disabled = true;
             gameOver.style.display = 'block';
             updateScroll();
             display.textContent = 'Time';
@@ -63,6 +66,7 @@ btn.addEventListener('click', () => {
         word.disabled = true;
     } else {
         word.disabled = false;
+        word.value = word.value.trim().toLowerCase();
         if (typeof lastLetter.value != 'undefined') {
             if (lastLetter.value == word.value[0]) {
                 socket.emit('game', {
@@ -78,7 +82,7 @@ btn.addEventListener('click', () => {
             };
         } else {
             socket.emit('game', {
-                word: word.value,
+                word: word.value.trim().toLowerCase(),
                 name: namePlayer.value,
                 lastLetter: word.value[word.value.length - 1],
                 socketId: socket.id
