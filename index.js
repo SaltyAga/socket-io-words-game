@@ -28,6 +28,7 @@ io.on ('connection', (socket) => {
     socket.on('game', (data) => {
         
         if (typeof data.word != 'undefined') {
+            data.word = data.word.trim().toLowerCase();
             if (dictionary.check(data.word)) {
                 if (wordsArr.indexOf(data.word) === -1) {
                     wordsArr.push(data.word);
