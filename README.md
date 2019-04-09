@@ -12,7 +12,7 @@ Live version: https://calm-thicket-99664.herokuapp.com/
   <img src="pics/1.png" width="500">
 </p>
 
-<h3>If a player tries to send the word being in use already (timer comtinues to count down)</h3>
+<h3>If a player is sending a word already being in use (timer comtinues to count down)</h3>
 <p align="center">
   <img src="pics/2.png" width="500">
 </p>
